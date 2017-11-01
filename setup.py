@@ -15,7 +15,7 @@ License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
 """
 
 import	sys
-from distutils.core import setup
+from setuptools import setup
 
 if sys.version_info < (2, 3):
     _setup = setup
