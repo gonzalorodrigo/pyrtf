@@ -1,11 +1,15 @@
 from PyRTF import Document, Section, Renderer
+import os
 import unittest
 
 
 class TestDocCrate(unittest.TestCase):
     
     def test_write_doc(self):
-        filename="file.rtf"
+        
+        self.addCleanup(os.remove, "file.rtf")
+        self.assertFalse(os.path.isfile("file.rtf"),
+                         "File Exists before test.")
         doc = Document()
         section = Section()
         doc.Sections.append(section)
@@ -17,6 +21,9 @@ class TestDocCrate(unittest.TestCase):
         doc.Sections.append(section)
         section.append("SOME TEXT2")
         
-        with open(filename, "w") as f:
+        with open("file.rtf", "w") as f:
             DR = Renderer()
             DR.Write(doc, f)
+        
+        self.assertTrue(os.path.isfile("file.rtf"))
+        
