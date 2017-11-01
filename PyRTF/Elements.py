@@ -1,9 +1,9 @@
-from	types		import	IntType, FloatType, LongType, StringTypes
-from	copy		import	deepcopy
+#from	types		import	IntType, FloatType, LongType, StringTypes
+from	 copy		import	deepcopy
 from    binascii    import  hexlify
 
-from    Constants   import  *
-from	Styles		import	*
+from PyRTF.Constants import  *
+from	 PyRTF.Styles import	*
 
 class UnhandledParamError( Exception ) :
 	def __init__( self, param ) :
@@ -513,7 +513,7 @@ class Table :
 
 	def AddRow( self, *cells ) :
 		height = None
-		if isinstance( cells[ 0 ], (IntType, FloatType, LongType) ):
+		if isinstance( cells[ 0 ], (int, float) ):
 			height = int( cells[ 0 ] )
 			cells  = cells[ 1 : ]
 
@@ -562,7 +562,7 @@ class Cell( list ) :
 		self._append = super( Cell, self ).append
 
 		for param in params :
-			if   isinstance( param, StringType ) : self.append    ( param )
+			if   isinstance( param, str ) : self.append    ( param )
 			elif isinstance( param, Paragraph  ) : self.append    ( param )
 			elif isinstance( param, FramePS    ) : self.SetFrame  ( param )
 			elif isinstance( param, MarginsPS  ) : self.SetMargins( param )

@@ -9,15 +9,14 @@ The TextPropertySet can be used for text or in a Paragraph Style.
 
 """
 
-from	types		import	StringType
-from	copy		import	deepcopy
+from 	copy		import	deepcopy
 
 
 #
 #	We need some basic Type like fonts, colours and paper definitions
 #
 def MakeAttributeName( value ) :
-	assert value and type( value ) is StringType
+	assert value and type( value ) is str
 	value = value.replace( ' ', '' )
 	return value
 
